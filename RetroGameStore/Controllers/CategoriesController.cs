@@ -11,6 +11,7 @@ namespace RetroGameStore.Controllers
 
         public IActionResult Browse(string categoryName)
         {
+            ViewBag.CategoryName = categoryName;
             return View();
         }   
 
