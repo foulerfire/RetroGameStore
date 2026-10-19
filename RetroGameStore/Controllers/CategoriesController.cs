@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RetroGameStore.Models;
 
 namespace RetroGameStore.Controllers
 {
@@ -6,7 +7,12 @@ namespace RetroGameStore.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var categories = new List<Category>();
+            for (int i = 1; i <= 10; i++)
+            {
+                categories.Add(new Category { Id = i, Name = "Category " + i });
+            }
+            return View(categories);
         }
 
         public IActionResult Browse(string categoryName)
