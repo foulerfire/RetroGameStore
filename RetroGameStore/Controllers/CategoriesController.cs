@@ -5,8 +5,10 @@ namespace RetroGameStore.Controllers
 {
     public class CategoriesController : Controller
     {
+       
         public IActionResult Index()
         {
+            /* a for loop to generate 10 categories*/
             var categories = new List<Category>();
             for (int i = 1; i <= 10; i++)
             {
@@ -21,6 +23,13 @@ namespace RetroGameStore.Controllers
             return View();
         }   
 
+        public IActionResult Create()
+        {
+            //display a form to add a new category
+
+
+            return View();
+        }
 
     }
 }
