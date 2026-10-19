@@ -8,5 +8,12 @@ namespace RetroGameStore.Controllers
         {
             return View();
         }
+
+        public IActionResult Browse(string categoryName)
+        {
+            return View();
+        }   
+
+
     }
 }
