@@ -9,10 +9,10 @@ using RetroGameStore.Data;
 
 #nullable disable
 
-namespace RetroGameStore.Data.Migrations
+namespace RetroGameStore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20261020233803_CreateCategoriesTable")]
+    [Migration("20261021023509_CreateCategoriesTable")]
     partial class CreateCategoriesTable
     {
         /// <inheritdoc />
@@ -244,6 +244,37 @@ namespace RetroGameStore.Data.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("RetroGameStore.Models.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Photo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Products");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -293,6 +324,22 @@ namespace RetroGameStore.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("RetroGameStore.Models.Product", b =>
+                {
+                    b.HasOne("RetroGameStore.Models.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("RetroGameStore.Models.Category", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

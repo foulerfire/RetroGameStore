@@ -9,10 +9,10 @@ using RetroGameStore.Data;
 
 #nullable disable
 
-namespace RetroGameStore.Data.Migrations
+namespace RetroGameStore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20261020235320_AddProductsWithCategoriesRelationship")]
+    [Migration("20261021023539_AddProductsWithCategoriesRelationship")]
     partial class AddProductsWithCategoriesRelationship
     {
         /// <inheritdoc />
