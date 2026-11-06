@@ -1,4 +1,5 @@
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -6,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using RetroGameStore.Data;
 using RetroGameStore.Models;
 
+[Authorize]
 public class ProductsController : Controller
 {
     private readonly ApplicationDbContext _context;
